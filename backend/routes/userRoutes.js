@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken')
 //@route POST /api/users
 //@access Public
 router.post('/register' , asyncHandler( async (req, res) => {
+  console.log('hit')
     const { name, email, password} = req.body
 
 
