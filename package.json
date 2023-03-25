@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/index.js",
-    "serve": "nodemon backend/index.js"
+    "server": "nodemon backend/index.js",
+    "client": "npm run serve --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Meynard David",
   "license": "ISC",
@@ -19,6 +21,7 @@
     "mongoose": "^7.0.2"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.21"
   }
 }
