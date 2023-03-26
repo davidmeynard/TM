@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs")
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const {authenticate} = require('../middleware/userAuthMiddleware')
 
 
 //@desc create new user
@@ -75,6 +76,13 @@ router.post('/login', asyncHandler( async (req, res) => {
 
 
 }))
+
+// @desc    Get user data
+// @route   GET /api/users/me
+// @access  Private
+router.get('/me', authenticate, asyncHandler(async (req, res) => {
+  res.status(200).json(req.user)
+})) 
 
 
 //generate json web token
