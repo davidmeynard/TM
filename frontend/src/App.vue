@@ -10,7 +10,12 @@ export default {
   name: 'App',
   components: {
     RouterView
+  },
+  beforeMount(){
+    this.$store.commit("checkUser")
+    if(!this.$store.state.user) this.$router.push('/login')
   }
+  
 }
 </script>
 

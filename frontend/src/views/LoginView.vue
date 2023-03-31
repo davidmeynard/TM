@@ -2,6 +2,7 @@
     <div class="container">
         <form @submit.prevent="login">
             <h1>Login</h1>
+            <p>{{ this.$store.state.error }}</p>
             <input type="email" v-model="email" placeholder="Email" required>
             <input type="password" v-model="password" placeholder="Password" required>
             <button>Login</button>
@@ -19,7 +20,8 @@
         },
         methods: {
             login(){
-                console.log(this.email + " " + this.password)
+                this.$store.dispatch('login',{email:this.email, password:this.password})
+                // router.push("/")
             },
         }
     }
